@@ -25,6 +25,15 @@ public class Priorities {
         }
 
         int k = Integer.parseInt(events.get(0));
+
+        if (k == 0) {
+            return getEmptyStudentList();
+        }
+
+        if (k > events.size() - 1) {
+            throw new IllegalArgumentException("The number of events should be greater than the number of students");
+        }
+
         Comparator<Student> comparator = Comparator.comparing(Student::getCgpa).reversed()
                 .thenComparing(Student::getName)
                 .thenComparing(Student::getId);
@@ -80,6 +89,7 @@ public class Priorities {
         }
 
         int k = Integer.parseInt(events.get(0));
+
         Comparator<Student> comparator = Comparator.comparing(Student::getCgpa).reversed()
                 .thenComparing(Student::getName)
                 .thenComparing(Student::getId);
